@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready( function() {
+          
+            for (var j=1; j<30; j++) {
+                let random = Math.floor(Math.random()*100)
+                let url = `https://pokeapi.co/api/v2/pokemon/${random}/`
+
+                fetch(url)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((pokeData)=>{
+                    showImg(pokeData)
+                });
+          
+                showImg = (pokeData) => {
+                    $('div').append(`<img src='https://pokeres.bastionbot.org/images/pokemon/${pokeData.id}.png'>`)
+                };
+
+            };
+
+        //     var poke = `<img src='https://pokeres.bastionbot.org/images/pokemon/`
+        //     for (var i=1; i<16; i++) {
+        //     $('div').append(poke + i + ".png'>")
+        // }
+        })
+    </script>
+    <style>
+        img {
+            display: inline-block;
+            width:150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div id='img'>
+
+    </div>
+</body>
+</html>
